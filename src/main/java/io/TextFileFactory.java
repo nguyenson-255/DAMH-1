@@ -45,15 +45,22 @@ public class TextFileFactory {
             FileInputStream fis = new FileInputStream(path);
             InputStreamReader isr = new InputStreamReader(fis,"UTF-8");
             BufferedReader br = new BufferedReader(isr);
-
             String line = br.readLine();
             while (line!=null){
-                String[] slagwords = line.split("`");
-                String[] word = slagwords[1].replace("| ","-").split("-");
-                if (slagwords.length == 2){
-                    SlagWord sw = new SlagWord(slagwords[0],word);
+                if (line.indexOf("`")!=-1){
+                    String[] slagwords = new String[2];
+                    slagwords = line.split("`");
+                    String[] word = slagwords[1].replace("| ","-").split("-");
+                    if (slagwords.length == 2){
+                        SlagWord sw = new SlagWord(slagwords[0],word);
+                        ds.add(sw);
+                    }
+                }else {
+
+                    SlagWord sw = new SlagWord(line,null);
                     ds.add(sw);
                 }
+
                 line = br.readLine();
             }
 

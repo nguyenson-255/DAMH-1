@@ -1,8 +1,12 @@
 package model;
 
-import java.util.Arrays;
+import io.TextFileFactory;
 
-public class SlagWord {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class SlagWord{
 
     private String slag;
     private String[] word;
@@ -32,6 +36,7 @@ public class SlagWord {
         this.word = word;
     }
 
+
     @Override
     public String toString() {
         return "SlagWord{" +
@@ -39,4 +44,5 @@ public class SlagWord {
                 ", word=" + Arrays.toString(word) +
                 '}';
     }
+
 }
