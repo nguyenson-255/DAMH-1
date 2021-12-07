@@ -50,9 +50,9 @@ public class TextFileFactory {
                 if (line.indexOf("`")!=-1){
                     String[] slagwords = new String[2];
                     slagwords = line.split("`");
-                    String[] word = slagwords[1].replace("| ","-").split("-");
+                    String[] word = slagwords[1].replace("| ","`").split("`");
                     if (slagwords.length == 2){
-                        SlagWord sw = new SlagWord(slagwords[0],word);
+                        SlagWord sw = new SlagWord(slagwords[0].trim(),word);
                         ds.add(sw);
                     }
                 }else {

@@ -47,8 +47,8 @@ public class View extends JFrame {
         panelSearchDefinition.add(btnSearchDefinition);
 
 
-//        add(panelSearchSlagword);
-        add(panelSearchDefinition);
+        add(panelSearchSlagword);
+//        add(panelSearchDefinition);
         pack();
         setVisible(true);
     }

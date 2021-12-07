@@ -5,6 +5,7 @@ import io.TextFileFactory;
 import model.SlagWord;
 import view.View;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Main {
@@ -26,7 +27,11 @@ public class Main {
 
 //
         View v = new View();
-        Controller c = new Controller(v);
+        try {
+            Controller c = new Controller(v);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
