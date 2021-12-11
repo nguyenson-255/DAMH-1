@@ -14,6 +14,8 @@ import static io.TextFileFactory.readFile;
 public class ActionMenu implements ActionListener {
 
     private Hashtable <String,ArrayList<String>> ds;
+    private Hashtable <String,ArrayList<String>> history;
+
 
     private ViewMenu v;
 
@@ -35,6 +37,8 @@ public class ActionMenu implements ActionListener {
     public ActionMenu(ViewMenu v) {
         this.v =  v;
         ds = new Hashtable<String, ArrayList<String>>();
+        history = new Hashtable<String, ArrayList<String>>();
+
 
         v.getBtnAdd().addActionListener(this);
         v.getBtnAdd().setActionCommand("Add");
@@ -78,11 +82,12 @@ public class ActionMenu implements ActionListener {
             }
             case "Search Slang":{
                 viewSearchSlang  = new ViewSearchSlang();
-                ActionSearchSlang c = new ActionSearchSlang(viewSearchSlang,ds);
+                ActionSearchSlang c = new ActionSearchSlang(viewSearchSlang,ds,history);
                 break;
             }
             case "History":{
                 viewHistory = new ViewHistory();
+                ActionShowHistory ash = new ActionShowHistory(viewHistory,history);
                 break;
             }
             case "Edit":{

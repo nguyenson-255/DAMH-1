@@ -8,6 +8,12 @@ public class ViewHistory extends JFrame{
 
     private JScrollPane jScrollPane;
     private JTable jTable;
+    private JButton btnRefresh;
+
+    public JButton getBtnRefresh() {
+        return btnRefresh;
+    }
+
     String [] col = {"Slang Word","Definition"};
     Object [][] data = new Object[100][2];
 
@@ -28,12 +34,22 @@ public class ViewHistory extends JFrame{
     }
 
     public ViewHistory() throws HeadlessException {
+        JPanel panel = new JPanel(new FlowLayout());
+        setLayout(new BorderLayout());
+
         jScrollPane = new JScrollPane();
         jTable = new JTable(data,col);
+        btnRefresh = new JButton("Refresh");
+
         jScrollPane.setViewportView(jTable);
-        jScrollPane.setPreferredSize(new Dimension(300,200));
-        add(jScrollPane);
-        setLayout(new FlowLayout());
+        panel.add(jScrollPane);
+        panel.setPreferredSize(new Dimension(500,200));
+
+
+        add(panel,BorderLayout.CENTER);
+        add(btnRefresh,BorderLayout.AFTER_LAST_LINE);
+
+
         pack();
         setVisible(true);
     }

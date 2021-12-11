@@ -11,10 +11,12 @@ public class ActionSearchSlang implements ActionListener {
 
     private ViewSearchSlang v;
     private Hashtable<String,ArrayList<String>> ds;
+    private Hashtable<String,ArrayList<String>> history;
 
-    public ActionSearchSlang(ViewSearchSlang v,Hashtable ds) {
+    public ActionSearchSlang(ViewSearchSlang v, Hashtable ds, Hashtable<String, ArrayList<String>> history) {
         this.v = v;
         this.ds =ds;
+        this.history = history;
 
         v.getBtnSearch().addActionListener(this);
         v.getBtnSearch().setActionCommand("Search");
@@ -24,15 +26,19 @@ public class ActionSearchSlang implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getActionCommand() == "Search"){
-            ArrayList<String> kq = (ArrayList<String>) ds.get(v.getTxtDefine().getText());
+                ArrayList<String> kq = (ArrayList<String>) ds.get(v.getTxtDefine().getText());
+                if (kq !=null){
+                    String out = "";
+                    for (String s: kq) {
+                        out+=(s+", ");
+                    }
+                    v.getLabelKQ().setText(out);
 
-            System.out.println(v.getTxtDefine().getText());
-                String out = "";
-                for (String s: kq) {
-                    out+=(s+", ");
+                    history.put(v.getTxtDefine().getText(),kq);
                 }
-                v.getLabelKQ().setText(out);
-                System.out.println(out);
+
+
+
         }
 
 
