@@ -98,18 +98,18 @@ public class ActionMenu implements ActionListener {
                 ds = readFile("src/main/java/io/slang.txt");
                 System.out.println("Success");
 
-
                 Set key = ds.keySet();
                 Collection value = ds.values();
 
-                System.out.println(key);
-                System.out.println(value);
+//                System.out.println(key);
+//                System.out.println(value);
 
 
                 break;
             }
             case "Random":{
                 viewRandomSlang = new ViewRandomSlang();
+                ActionRandom a = new ActionRandom(viewRandomSlang,ds);
                 break;
             }
             case "Delete":{
