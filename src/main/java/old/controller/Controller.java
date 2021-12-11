@@ -26,7 +26,7 @@ public class Controller implements ActionListener {
 
     public Controller(View v) throws SQLException {
         this.v = v;
-        ds = TextFileFactory.readFile("slang.txt");
+//        ds = TextFileFactory.readFile("slang.txt");
 
         try {
 
@@ -81,6 +81,12 @@ public class Controller implements ActionListener {
             stmt.execute("create database SLANGWORDS");
             stmt.execute("use SLANGWORDS");
             stmt.execute("create table search (\n" +
+                    "\n" +
+                    "\tslang nvarchar(300),\n" +
+                    "    word nvarchar(300)\n" +
+                    ")\n");
+
+            stmt.execute("create table history (\n" +
                     "\n" +
                     "\tslang nvarchar(300),\n" +
                     "    word nvarchar(300)\n" +
@@ -189,14 +195,16 @@ public class Controller implements ActionListener {
         String query;
 
         stmt.execute("use SLANGWORDS");
-
         query = "select word from search where slang = '"+word+"';";
         System.out.println(query);
         rs = stmt.executeQuery(query);
         while (rs.next()){
             Slags.add(rs.getString("word"));
         }
-
+        for (String slang: Slags) {
+            query = "insert into history (slang,word) values ('"+word+"','"+slang+"')";
+            stmt.executeUpdate(query);
+        }
         return Slags;
     }
 }
