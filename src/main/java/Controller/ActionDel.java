@@ -2,6 +2,8 @@ package Controller;
 
 
 import View.ViewAdd;
+import View.ViewConfirmDel;
+import View.ViewDelete;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,24 +12,25 @@ import java.util.Hashtable;
 
 public class ActionDel implements ActionListener {
 
-    private ViewAdd v;
+    private ViewDelete v;
     Hashtable<String , ArrayList<String>> ds;
-    public ActionDel(ViewAdd v,Hashtable<String , ArrayList<String>> ds) {
+    public ActionDel(ViewDelete v,Hashtable<String , ArrayList<String>> ds) {
         this.v = v;
         this.ds = ds;
 
-        v.getBtnAdd().addActionListener(this);
-        v.getBtnAdd().setActionCommand("Add");
+        v.getBtnDelete().addActionListener(this);
+        v.getBtnDelete().setActionCommand("Del");
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getActionCommand() == "Add"){
-            ArrayList<String> temp =new ArrayList<>();
-            temp.add(v.getTxtDefine().getText());
-            ds.put(v.getTxtSlangword().getText(),temp);
+        if (e.getActionCommand() == "Del"){
+
+            ViewConfirmDel vcd = new ViewConfirmDel();
+            ActionConfirmDel acd = new ActionConfirmDel(vcd,ds,v.getTxtSlangword().getText());
+            v.dispose();
         }
 
     }

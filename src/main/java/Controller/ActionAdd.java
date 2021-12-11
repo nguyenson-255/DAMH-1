@@ -1,6 +1,7 @@
 package Controller;
 
 import View.ViewAdd;
+import View.ViewConfirmOverwriteAndDuplicate;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,9 +25,9 @@ public class ActionAdd implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getActionCommand() == "Add"){
-            ArrayList<String> temp =new ArrayList<>();
-            temp.add(v.getTxtDefine().getText());
-            ds.put(v.getTxtSlangword().getText(),temp);
+            ViewConfirmOverwriteAndDuplicate v1 = new ViewConfirmOverwriteAndDuplicate();
+            ActionConfirmOWAndDup a1 = new ActionConfirmOWAndDup(v1,ds,v.getTxtSlangword().getText(),v.getTxtDefine().getText());
+            v.dispose();
         }
 
     }

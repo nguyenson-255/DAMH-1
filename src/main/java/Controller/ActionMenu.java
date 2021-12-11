@@ -109,6 +109,7 @@ public class ActionMenu implements ActionListener {
             }
             case "Delete":{
                 vdel = new ViewDelete();
+                ActionDel ad = new ActionDel(vdel,ds);
                 break;
             }
             case "DV Define":{
