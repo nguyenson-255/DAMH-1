@@ -45,6 +45,7 @@ public class ViewSearchSlang extends JFrame {
         add(btnSearch,BorderLayout.AFTER_LAST_LINE);
         pack();
         setVisible(true);
+        setPreferredSize(new Dimension(300,50));
 
     }
 }

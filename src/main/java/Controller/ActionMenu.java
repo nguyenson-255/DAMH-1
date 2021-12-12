@@ -4,10 +4,7 @@ import View.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Hashtable;
-import java.util.Set;
+import java.util.*;
 
 import static io.TextFileFactory.readFile;
 
@@ -23,15 +20,11 @@ public class ActionMenu implements ActionListener {
     private ViewDelete vdel;
     private ViewEdit vedit;
     private ViewDvDefine viewDvDefine;
-    private ViewDVSlang viewDVSlang;
     private ViewRandomSlang viewRandomSlang;
     private ViewSearchDefine viewSearchDefine;
     private ViewSearchSlang viewSearchSlang;
     private ViewHistory viewHistory;
-
-
-
-
+    private ViewDVSlang viewDVSlang;
 
 
     public ActionMenu(ViewMenu v) {
@@ -123,13 +116,55 @@ public class ActionMenu implements ActionListener {
                 break;
             }
             case "DV Slang":{
-                viewDVSlang = new ViewDVSlang();
+                viewDVSlang = xuLyRandomQuestion(ds);
+                ActionDVSlang a = new ActionDVSlang(viewDVSlang,ds);
                 break;
             }
         }
 
 
 
+    }
+
+    public static ViewDVSlang xuLyRandomQuestion(Hashtable<String, ArrayList<String>> ds) {
+        ViewDVSlang v = new ViewDVSlang();
+        String[] keys = ds.keySet().toArray(new String[ds.size()]);
+
+        String key,values;
+
+        int j = new Random().nextInt(4);
+        
+        for (int i=0;i<4;i++){
+
+            key = keys[new Random().nextInt(keys.length)];
+            values = ds.get(key).toString();
+            if (i==j){
+                v.getLbl().setText(key);
+           }
+
+            switch (i){
+                case 0:{
+                    v.getBtna().setText(values);
+                    break;
+                }
+                case 1:{
+                    v.getBtnb().setText(values);
+                    break;
+                }
+                case 2:{
+                    v.getBtnc().setText(values);
+                    break;
+                }
+                case 3:{
+                    v.getBtnd().setText(values);
+                    break;
+                }
+            }
+
+       }
+
+
+        return v;
     }
 
 
