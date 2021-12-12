@@ -112,7 +112,8 @@ public class ActionMenu implements ActionListener {
                 break;
             }
             case "DV Define":{
-                viewDvDefine = new ViewDvDefine();
+                viewDvDefine =xuLyRandomDefineQuestion(ds);
+                ActionDVDefine a = new ActionDVDefine(viewDvDefine,ds);
                 break;
             }
             case "DV Slang":{
@@ -124,6 +125,47 @@ public class ActionMenu implements ActionListener {
 
 
 
+    }
+
+    private ViewDvDefine xuLyRandomDefineQuestion(Hashtable<String, ArrayList<String>> ds) {
+        ViewDvDefine v = new ViewDvDefine();
+        String[] keys = ds.keySet().toArray(new String[ds.size()]);
+
+        String key,values;
+
+        int j = new Random().nextInt(4);
+
+        for (int i=0;i<4;i++){
+
+            key = keys[new Random().nextInt(keys.length)];
+            values = ds.get(key).toString();
+            if (i==j){
+                v.getLbl().setText(values);
+            }
+
+            switch (i){
+                case 0:{
+                    v.getBtna().setText(key);
+                    break;
+                }
+                case 1:{
+                    v.getBtnb().setText(key);
+                    break;
+                }
+                case 2:{
+                    v.getBtnc().setText(key);
+                    break;
+                }
+                case 3:{
+                    v.getBtnd().setText(key);
+                    break;
+                }
+            }
+
+        }
+
+
+        return v;
     }
 
     public static ViewDVSlang xuLyRandomQuestion(Hashtable<String, ArrayList<String>> ds) {

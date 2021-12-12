@@ -6,8 +6,31 @@ import java.awt.*;
 
 public class ViewDvDefine extends JFrame {
 
-    private JButton btna,btnb,btnc,btnd;
+    private JButton btna,btnb,btnc,btnd,btnFind;
     private JLabel lbl;
+
+    public ViewDvDefine() throws HeadlessException {
+        JPanel panel = new JPanel(new GridLayout(2,2));
+        btna = new JButton("0");
+        btnb = new JButton("1");
+        btnc = new JButton("2");
+        btnd = new JButton("3");
+        panel.add(btna);
+        panel.add(btnb);
+        panel.add(btnc);
+        panel.add(btnd);
+        lbl = new JLabel("Cau Hoi");
+        lbl.setSize(25,10);
+
+        setLayout(new BorderLayout());
+
+        add(lbl,BorderLayout.PAGE_START);
+        add(panel,BorderLayout.CENTER);
+        setPreferredSize(new Dimension(700,100));
+        pack();
+        setVisible(true);
+
+    }
 
     public JButton getBtna() {
         return btna;
@@ -27,26 +50,5 @@ public class ViewDvDefine extends JFrame {
 
     public JLabel getLbl() {
         return lbl;
-    }
-
-    public ViewDvDefine() throws HeadlessException {
-        JPanel panel = new JPanel(new GridLayout(2,2));
-        btna = new JButton("Cau A");
-        btnb = new JButton("Cau A");
-        btnc = new JButton("Cau A");
-        btnd = new JButton("Cau A");
-        panel.add(btna);
-        panel.add(btnb);
-        panel.add(btnc);
-        panel.add(btnd);
-        lbl = new JLabel("Cau Hoi");
-
-        setLayout(new BorderLayout());
-
-        add(lbl,BorderLayout.PAGE_START);
-        add(panel,BorderLayout.CENTER);
-        pack();
-        setVisible(true);
-
     }
 }
