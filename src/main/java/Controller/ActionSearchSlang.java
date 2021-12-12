@@ -30,6 +30,10 @@ public class ActionSearchSlang implements ActionListener {
                 if (kq !=null){
                     String out = "";
                     for (String s: kq) {
+                        if (s == kq.get(kq.size()-1)){
+                            out+=s;
+                            break;
+                        }
                         out+=(s+", ");
                     }
                     v.getLabelKQ().setText(out);

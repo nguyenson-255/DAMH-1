@@ -92,6 +92,7 @@ public class ActionMenu implements ActionListener {
             }
             case "Edit":{
                 vedit = new ViewEdit();
+                ActionEdit ae = new ActionEdit(vedit,ds);
                 break;
             }
             case "Reset":{
