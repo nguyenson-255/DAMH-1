@@ -40,6 +40,8 @@ public class ViewRandomSlang extends JFrame {
         lblDefine = new JLabel("Definition");
         lblSlang = new JLabel("Slang Word");
 
+        txtDefine.setEditable(false);
+        txtSlangword.setEditable(false);
         panel.add(lblSlang);
         panel.add(txtSlangword);
         panel.add(lblDefine);

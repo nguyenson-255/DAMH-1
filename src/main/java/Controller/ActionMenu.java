@@ -15,7 +15,6 @@ public class ActionMenu implements ActionListener {
 
 
     private ViewMenu v;
-
     private ViewAdd vadd;
     private ViewDelete vdel;
     private ViewEdit vedit;
